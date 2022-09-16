@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  rabbitmq:
+    hostname: "rabbit_node_1"
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - connection
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+  mongodb:
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - connection
+    volumes:
+      - mongo:/data/db
+  mysql:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=quotes
+      - MYSQL_ROOT_PASSWORD=mauFJcuf5dhRMQrjj
+    ports:
+      - '3306:3306'
+    networks:
+      - connection
+    volumes:
+      - mysql:/var/lib/mysql
+
+
+networks:
+  connection:
+    driver: bridge
+    name: connection_network
+
+volumes:
+  rabbitmq:
+    driver: local
+  mongo:
+    driver: local
+  mysql:
+    driver: local
