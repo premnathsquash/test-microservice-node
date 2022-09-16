@@ -9,6 +9,6 @@ import {myDataSource} from './app-data-source';
 
 
 myDataSource.initialize().then(() => {
-    console.log('connected');
+    console.log('DB connected');
 }).catch(err => console.error('Error in connection \n', err)
 )
