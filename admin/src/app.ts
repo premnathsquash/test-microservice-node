@@ -7,7 +7,8 @@ import { Product } from './entity/product';
 
 import { myDataSource } from './app-data-source';
 
-myDataSource.initialize().then(() => {
-console.log('DB connected');
+myDataSource.initialize().then((db) => {
+    const productRepository = db.getRepository(Product);
+console.log('DB connected', productRepository);
 }).catch(err => console.error('Error in connection \n', err)
 )
