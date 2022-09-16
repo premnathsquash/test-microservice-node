@@ -5,6 +5,7 @@
             "ES6",
             "DOM"
         ],
+        "rootDir": "src",
         "outDir": "build",
         "target": "ES5",
         "module": "commonjs",

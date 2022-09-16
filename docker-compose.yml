@@ -17,6 +17,8 @@ services:
     container_name: mongo
     ports:
       - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=node_user
     networks:
       - connection
     volumes:
@@ -27,8 +29,10 @@ services:
       - SYS_NICE
     restart: always
     environment:
-      - MYSQL_DATABASE=quotes
+      - MYSQL_DATABASE=node_admin
       - MYSQL_ROOT_PASSWORD=mauFJcuf5dhRMQrjj
+      - MYSQL_PASSWORD=mauFJcuf5dhRMQrjj
+      - MYSQL_USER=node_admin
     ports:
       - '3306:3306'
     networks:
